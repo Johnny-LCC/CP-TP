@@ -1,4 +1,4 @@
 # CP-TP
 Trabalho Prático CP
 
-Problema 2 - concluído
+Problemas 1 e 2 "resolvidos"
