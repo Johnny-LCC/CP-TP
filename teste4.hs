@@ -12,8 +12,8 @@ ld :: Integer -> [Integer]
 ld = anaList ((id -|- split succ id) . outNat)
 -- ld 5 = [5,4,3,2,1] -- ld 3 = [3,2,1] -- ld 0 = []
 
-lista :: [[Integer]]
-lista = [ld x | x <- l]
+lista :: [Integer] -> [[Integer]]
+lista l = [ld x | x <- l]
 
 teste :: [[Integer]] -> [Integer]
 teste = cataList (either nil maxR)
@@ -28,13 +28,13 @@ sub :: Integer -> [Integer] -> [Integer]
 sub _ [] = []
 sub n (h:t) = n : sub n t
 
--- sum(teste lista) = 10
+lrh = sum . teste . lista
 
 ------------------------------------------------
 -- eu acho que é preciso transformar tudo isto
 -- em apnas um hilomorfismo, do tipo:
 
---k = hyloList f g
+-- lrh = hyloList f g
 -- g (ana) :: [a] -> [[a]]
 -- f (cata) :: [[a]] -> a
 -------------------------------------------------
