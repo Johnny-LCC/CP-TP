@@ -30,11 +30,15 @@ sub n (h:t) = n : sub n t
 
 lrh = sum . teste . lista
 
-------------------------------------------------
--- eu acho que é preciso transformar tudo isto
--- em apnas um hilomorfismo, do tipo:
+------------------HILOMORFISMO---------------------
+lrh' = sum . hyloList f g
+f = either nil maxR
+g = (id -|- (cons . split succ singl >< id)) . out
 
--- lrh = hyloList f g
--- g (ana) :: [a] -> [[a]]
--- f (cata) :: [[a]] -> a
--------------------------------------------------
+out :: [Integer] -> Either () (Integer, [Integer])
+out [] = i1 ()
+out (h:t) = i2 (h-1,t)
+
+-- Acho que o anamorfismo (g) não está perfeito,
+-- talvez precise de alterações! 
+---------------------------------------------------
