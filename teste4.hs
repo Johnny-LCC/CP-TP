@@ -20,9 +20,11 @@ teste = cataList (either nil maxR)
 -- teste lista = [5,5]
 
 maxR :: ([Integer], [Integer]) -> [Integer]
+maxR ([],h:t) = [h] 
 maxR (h:t, []) = [h] 
-maxR (h:t, l)| head l >= h = if sum l > ((len l)+1) * h then l else h : sub h l 
-             | otherwise = if h > sum l then [h] else head l: l
+maxR (h:t, l)| head l > h = if sum l > ((len l)+1) * h then singl(sum l) else h : sub h l --
+             | head l == h = h:l
+             | otherwise = if h > sum l then h:sub 0 l else head l: l 
 
 sub :: Integer -> [Integer] -> [Integer]
 sub _ [] = []
