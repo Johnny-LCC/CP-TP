@@ -7,7 +7,7 @@ f = either nil (mSort . conc)
 mergek = hyloList f outList
 
 mSortk :: Integer -> [Integer] -> [Integer]
-mSortk k l = mergek (splitk k l)
+mSortk k l = mergek . splitk k
 
 splitk :: Integer -> [b] -> [[b]]
 splitk _ [] = []
