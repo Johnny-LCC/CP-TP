@@ -43,4 +43,6 @@ out (h:t) = i2 (h-1,t)
 
 -- Acho que o anamorfismo (g) não está perfeito,
 -- talvez precise de alterações! 
+
+-- A função maxR também está incompleta...
 ---------------------------------------------------
