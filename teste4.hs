@@ -1,33 +1,31 @@
 import Cp
-import List ( cataList, anaList )
-import Nat ( outNat )
+import List ( cataList, anaList , hyloList, outList)
 
 l :: [Integer]
-l = [2,1,5,6,2,3]
---------------------------------------------------------
-len :: [a] -> Integer
-len = foldr (\ h -> (+) 1) 0
+l = [1,3,5,4,3,2,2,3,1,0,3,2,2]
+l1 :: [Integer]
+l1 = [2,1,5,6,2,3]
+l2 :: [Integer]
+l2 = [3,5,2,1,5,4]
 
-maxR :: ([Integer], [Integer]) -> [Integer]
-maxR ([],h:t) = [h] 
-maxR (h:t, []) = [h] 
-maxR (h:t, l)| head l > h = if sum l > ((len l)+1) * h then singl(sum l) else h : sub h l --
-             | head l == h = h:l
-             | otherwise = if h >= (sum l + head l) then h:sub 0 l else head l: l 
+testeA :: [Integer] -> [[Integer]]
+testeA = anaList ((id -|- split cons p2) . outList)
+testeC :: [[Integer]] -> [Integer]
+testeC = cataList (either nil ff) -- ?
+testeH :: [Integer] -> Integer
+testeH = maxCata . testeC . testeA
 
-sub :: Integer -> [Integer] -> [Integer]
-sub _ [] = []
-sub n (h:t) = n : sub n t
+testeR :: [Integer] -> Integer
+testeR [] = 0 --
+testeR (0:t) = 0
+testeR (h:t) = max (h * (1 + auxR (h,t))) (testeR(h-1:t))
 
-lrh = sum . hyloList f g
-f = either nil maxR
-g = (id -|- ( singl >< id)) . outList
+auxR :: (Integer,[Integer]) -> Integer
+auxR (x,[]) = 0
+auxR (x,h:t) | x <= h = 1 + auxR(x,t)
+             | otherwise = 0
 
--- Acho que está concluído, mas preciso de realizar
--- mais alguns testes. Sintam-se livres para fazerem
--- o mesmo
----------------------------------------------------
+ff :: ([Integer], [Integer]) -> [Integer]
+ff = cons.(testeR >< id)
 
-out :: [Integer] -> Either () (Integer, [Integer])
-out [] = i1 ()
-out (h:t) = i2 (h-1,t)
+maxCata = cataList (either zero (uncurry max))
