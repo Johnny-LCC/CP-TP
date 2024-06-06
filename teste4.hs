@@ -29,3 +29,4 @@ ff :: ([Integer], [Integer]) -> [Integer]
 ff = cons.(mRec >< id)
 
 maxCata = cataList (either zero (uncurry max))
+-- Vou só dar uma ajeitada nos tipos das funções --
