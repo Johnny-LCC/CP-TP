@@ -2,7 +2,7 @@ import Cp
 import List ( hyloList, outList )
 import LTree ( mSort )
 
-f = either nil (mSort . conc)
+f = either nil merge --(mSort . conc)
 
 mergek = hyloList f outList
 
