@@ -15,12 +15,12 @@ lrh = maxCata . hyloList f g
 ff = either zero (uncurry max.(mRec >< id))
 lrh' = hyloList ff g
 
-mRec :: [Integer] -> Integer
+mRec :: (Num a, Ord a) => [a] -> a
 mRec [] = 0 --
 mRec (0:t) = 0
 mRec (h:t) = max (h * (1 + auxR (h,t))) (mRec(h-1:t))
 
-auxR :: (Integer,[Integer]) -> Integer
+auxR :: (Num a, Ord a) => (a,[a]) -> a
 auxR (x,[]) = 0
 auxR (x,h:t) | x <= h = 1 + auxR(x,t)
              | otherwise = 0
