@@ -11,9 +11,9 @@ l2 = [3,5,2,1,5,4]
 testeA :: [Integer] -> [[Integer]]
 testeA = anaList ((id -|- split cons p2) . outList)
 testeC :: [[Integer]] -> [Integer]
-testeC = cataList (either nil ff) -- ?
-testeH :: [Integer] -> Integer
-testeH = maxCata . testeC . testeA
+testeC = cataList (either nil ff)
+lrh :: [Integer] -> Integer
+lrh = maxCata . testeC . testeA
 
 testeR :: [Integer] -> Integer
 testeR [] = 0 --
