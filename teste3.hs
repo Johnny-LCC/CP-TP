@@ -8,3 +8,8 @@ g n k | n == k = 0
       | otherwise = f k * f (n-1-k) + g n (k+1)
 
 -- para calcular o número de Catalan n (f n) --
+
+cat = prj . for loop inic where
+    loop (a,b) = (b,a*b) -- não está correto
+    inic = (1,1)
+    prj = id
