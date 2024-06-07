@@ -10,6 +10,6 @@ g n k | n == k = 0
 -- para calcular o número de Catalan n (f n) --
 
 cat = prj . for loop inic where
-    loop (a,b) = (b,a*b) -- não está correto
-    inic = (1,1)
-    prj = id
+    loop (a,b) = (a+1, div ((4*a+2)*b) (a+2))
+    inic = (0,1)
+    prj = p2
